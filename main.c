@@ -14,10 +14,9 @@ void meter();
 int sacar();
 void mostrar();
 
-int main(void)
+void main()
 {
     menu();
-    return 0;
 }
 
 void menu()
@@ -93,7 +92,7 @@ int sacar()
     else
     {
         data = head->info;
-        free(head);
+        head = NULL;
     }
 
     return data;

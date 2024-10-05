@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.29"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Colas_dinamicas",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Colas_dinamicas::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Colas_dinamicas-Debug-361563714e7d4a9d63cd.json",
+					"name" : "Colas_dinamicas",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/cande/OneDrive/Escritorio/Tec uwu/Estructura de datos/Unidad 2/Colas dinamicas/cmake-build-debug",
+		"source" : "C:/Users/cande/OneDrive/Escritorio/Tec uwu/Estructura de datos/Unidad 2/Colas dinamicas"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

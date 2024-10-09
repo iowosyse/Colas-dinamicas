@@ -13,6 +13,7 @@ int size();
 int get(int index);
 bool contains(int s);
 bool add(int s);
+void insertarOrdenado(int x);
 bool removeByValue(int s);
 bool removeByIndex(int index);
 int indexOf(int s);
@@ -24,13 +25,14 @@ int main(void) {
     do {
         printf("\n--Menu--\n");
         printf("1. Agregar elemento\n");
-        printf("2. Eliminar elemento por valor\n");
-        printf("3. Eliminar elemento por índice\n");
-        printf("4. Obtener tamaño de la lista\n");
-        printf("5. Obtener valor por índice\n");
-        printf("6. Verificar si contiene un valor\n");
-        printf("7. Obtener índice de un valor\n");
-        printf("8. Mostrar");
+        printf("2. Agregar ordenado\n");
+        printf("3. Eliminar elemento por valor\n");
+        printf("4. Eliminar elemento por índice\n");
+        printf("5. Obtener tamaño de la lista\n");
+        printf("6. Obtener valor por índice\n");
+        printf("7. Verificar si contiene un valor\n");
+        printf("8. Obtener índice de un valor\n");
+        printf("9. Mostrar\n");
         printf("0. Salir\n");
         printf(">> ");
         scanf("%d", &opcion);
@@ -43,6 +45,12 @@ int main(void) {
                 printf("Valor %d agregado a la lista.\n", valor);
                 break;
             case 2:
+                printf("Ingrese el valor a agregar: ");
+                scanf("%d", &valor);
+                insertarOrdenado(valor);
+                printf("Valor %d agregado a la lista.\n", valor);
+                break;
+            case 3:
                 printf("Ingrese el valor a eliminar: ");
                 scanf("%d", &valor);
                 if (removeByValue(valor)) {
@@ -51,7 +59,7 @@ int main(void) {
                     printf("Valor %d no encontrado en la lista.\n", valor);
                 }
                 break;
-            case 3:
+            case 4:
                 printf("Ingrese el índice del valor a eliminar: ");
                 scanf("%d", &index);
                 if (removeByIndex(index)) {
@@ -60,10 +68,10 @@ int main(void) {
                     printf("Índice %d no válido.\n", index);
                 }
                 break;
-            case 4:
+            case 5:
                 printf("El tamaño de la lista es: %d\n", size());
                 break;
-            case 5:
+            case 6:
                 printf("Ingrese el índice del valor a obtener: ");
                 scanf("%d", &index);
                 valor = get(index);
@@ -73,7 +81,7 @@ int main(void) {
                     printf("Índice %d no válido.\n", index);
                 }
                 break;
-            case 6:
+            case 7:
                 printf("Ingrese el valor a buscar: ");
                 scanf("%d", &valor);
                 if (contains(valor)) {
@@ -82,7 +90,7 @@ int main(void) {
                     printf("El valor %d no se encuentra en la lista.\n", valor);
                 }
                 break;
-            case 7:
+            case 8:
                 printf("Ingrese el valor para obtener su índice: ");
                 scanf("%d", &valor);
                 index = indexOf(valor);
@@ -92,7 +100,7 @@ int main(void) {
                     printf("El valor %d no se encuentra en la lista.\n", valor);
                 }
                 break;
-            case 8:
+            case 9:
                 mostrar();
                 break;
             case 0:
@@ -269,3 +277,38 @@ void mostrar()
     }
     printf("-\n");
 }
+
+void insertarOrdenado(int x)
+{
+    nodo *nuevo = malloc(sizeof(nodo));
+    nuevo->info = x;
+    nuevo->sig = NULL;
+
+    if (head == NULL)
+    {
+        // Si la lista está vacía, el nuevo nodo se convierte en el primer nodo
+        head = nuevo;
+    }
+    else
+    {
+        // Si el valor es menor que la cabeza, el nuevo nodo se convierte en la nueva cabeza
+        if (x < head->info)
+        {
+            nuevo->sig = head;
+            head = nuevo;
+        }
+        else
+        {
+            // Recorremos la lista para encontrar la posición correcta
+            nodo *current = head;
+            while (current->sig != NULL && current->sig->info < x)
+            {
+                current = current->sig;
+            }
+            // Insertamos el nuevo nodo en la posición encontrada
+            nuevo->sig = current->sig;
+            current->sig = nuevo;
+        }
+    }
+}
+

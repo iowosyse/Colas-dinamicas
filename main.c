@@ -6,6 +6,7 @@ typedef struct nodo {
     struct nodo *sig;
 } nodo;
 
+
 nodo *head = NULL;
 
 nodo* nuevoNodo(int valor);
